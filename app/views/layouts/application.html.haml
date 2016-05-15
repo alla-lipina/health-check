@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Healthcheck
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{ href: "#" }
+            Health Check
+    .container
+      - flash.each do |key, value|
+        %div.alert.alert-info{ class: key } 
+          = value
+      .boo
+        = yield 
