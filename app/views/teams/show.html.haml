@@ -1,0 +1,13 @@
+%dl
+  %dt
+    team name:
+  %dd
+    = @team.name
+  %dt
+    team emails:
+  %dd
+    = @team.emails
+
+= link_to 'Edit', edit_organization_team_path(@organization, @team)
+|
+= link_to 'Back', organization_path(@organization)

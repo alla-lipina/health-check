@@ -1,22 +1,22 @@
-%p#notice= notice
 %h1 Listing Organizations
 %table.table
   %thead
     %tr
       %th
-        name
+        name:
       %th
-        actions
+        actions:
   %tbody
     - @organizations.each do |organization|
       %tr
         %td
           = organization.name
         %td
-          = link_to 'Show', organization
+          = link_to 'Show', organization, class: "btn btn-link"
           |
-          = link_to 'Edit', edit_organization_path(organization)
+          = link_to 'Edit', edit_organization_path(organization), class: "btn btn-link"
           |
-          = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }
+          .inline-block{ style: "display: inline-block" }
+            = button_to "Destroy", organization, method: :delete, class: "btn btn-link"
 %br
   = link_to 'New Organization', new_organization_path, class: "btn btn-primary"

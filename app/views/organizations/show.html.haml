@@ -1,5 +1,26 @@
-= @organization.name
-%br
-= link_to 'Edit', edit_organization_path(@organization)
-|
-= link_to 'Back', organizations_path
+= link_to 'to organizations', organizations_path
+
+%h1 
+  Listing Teams of "
+  = @organization.name
+  "
+%table.table
+  %thead
+    %tr
+      %th
+        name:
+      %th
+        actions:
+  %tbody
+    - @organization.teams.each do |team|
+      %tr
+        %td= team.name
+        %td
+          = link_to 'Show', [@organization, team], class: "btn btn-link"
+          |
+          = link_to 'Edit', edit_organization_team_path(@organization, team), class: "btn btn-link"
+          |
+          .inline-block{ style: "display: inline-block" }
+            = button_to "Destroy", [@organization, team], method: :delete, class: "btn btn-link"
+
+= link_to 'New Team', new_organization_team_path(@organization), class: "btn btn-primary"
