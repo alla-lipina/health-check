@@ -11,20 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513113910) do
+ActiveRecord::Schema.define(version: 20160513113817) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
+    t.integer  "organization_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "organization_id"
   end
 
   add_index "questions", ["organization_id"], name: "index_questions_on_organization_id"
@@ -38,34 +39,26 @@ ActiveRecord::Schema.define(version: 20160513113910) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
+    t.text     "emails"
+    t.integer  "organization_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "organization_id"
   end
 
   add_index "teams", ["organization_id"], name: "index_teams_on_organization_id"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "team_id"
-  end
-
-  add_index "users", ["team_id"], name: "index_users_on_team_id"
-
   create_table "votes", force: :cascade do |t|
     t.float    "value"
     t.text     "comment"
+    t.integer  "team_id"
+    t.integer  "vote_id"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.integer  "survey_id"
   end
 
   add_index "votes", ["question_id"], name: "index_votes_on_question_id"
-  add_index "votes", ["survey_id"], name: "index_votes_on_survey_id"
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["team_id"], name: "index_votes_on_team_id"
+  add_index "votes", ["vote_id"], name: "index_votes_on_vote_id"
 
 end
