@@ -7,11 +7,14 @@
       %ul
         - @team.errors.full_messages.each do |message|
           %li= message
+  
   .form-group
     = f.label :name do
       Team name
       = f.text_field :name, class: "form-control", placeholder: "Enter name"
     %p.help-block Blbal
+
+  .form-group
     = f.label :emails do
       Team members emails
       = f.text_area :emails, class: "form-control", placeholder: "Enter name"
