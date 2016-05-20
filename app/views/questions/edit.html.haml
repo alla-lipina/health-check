@@ -1,22 +1,2 @@
-%h1 Editing question
-= form_for :question, url: question_path(@question), method: :patch do |f|
-  - if @question.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@question.errors.count, "error")
-        prohibited
-        this question from being saved:
-      %ul
-        - @question.errors.full_messages.each do |msg|
-          %li= msg
-  %p
-    = f.label :title
-    %br/
-    = f.text_field :title
-  %p
-    = f.label :text
-    %br/
-    = f.text_area :text
-  %p
-    = f.submit
-= link_to 'Back', questions_path
+%h1 Edit Question
+= render 'form'

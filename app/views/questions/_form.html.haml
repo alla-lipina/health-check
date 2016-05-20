@@ -1,0 +1,22 @@
+= form_for([@organization, @question]) do |f|
+  - if @question.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@question.errors.count, "error")
+        prohibited this question from being saved:
+      %ul
+        - @question.errors.full_messages.each do |message|
+          %li= message
+  
+  .form-group
+    = f.label :title do
+      Question title
+      = f.text_field :title, class: "form-control", placeholder: "Place your question"
+
+  .form-group
+    = f.label :text do
+      Description
+      = f.text_area :text, class: "form-control", placeholder: "Type explanation"
+
+  
+  = f.submit class: "btn btn-primary"
