@@ -1,0 +1,21 @@
+= form_for(@survey) do |f|
+  - if @survey.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@survey.errors.count, "error")} prohibited this survey from being saved:"
+      %ul
+        - @survey.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :start_at do
+      Team name
+      = f.text_field :start_at, class: "form-control", placeholder: "Enter name"
+    %p.help-block Blbal
+
+  .form-group
+    = f.label :stop_at do
+      Team members emails
+      = f.text_field :stop_at, class: "form-control", placeholder: "Enter name"
+
+  
+  = f.submit class: "btn btn-primary"

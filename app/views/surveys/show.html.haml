@@ -1,0 +1,12 @@
+- Organization.first.teams.each do |team|
+  = team.name
+
+  %ul
+    - Organization.first.questions.each do |question|
+      %li
+        = question.title
+        = Vote.by_team(team.id).by_survey(@survey.id).avg
+
+= link_to 'Edit', edit_survey_path(@survey)
+|
+= link_to 'Back', surveys_path
