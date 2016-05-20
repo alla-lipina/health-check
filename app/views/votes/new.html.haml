@@ -1,0 +1,17 @@
+= form_tag(votes_path({token: params[:token]})) do
+  %table.table
+    %tr
+      %th
+        question:
+      %th
+        vote and comment:
+    - @organization.questions.each do |question|
+      %tr
+        %td
+          = question.title
+        %td
+          value:
+          = text_field_tag "votes[#{question.id}][value]", nil, type: "number", min: "0", max: "1"
+          comment:
+          = text_field_tag "votes[#{question.id}][comment]"
+  = submit_tag
