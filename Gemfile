@@ -11,6 +11,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'haml'
+gem "haml-rails", "~> 0.9"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -29,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

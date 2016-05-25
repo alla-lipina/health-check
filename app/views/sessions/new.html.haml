@@ -1,0 +1,12 @@
+%h1 
+  Login
+= form_for(:organization, url: sessions_path) do |f|
+  .form-group
+    = f.label :name do
+      Name
+      = f.text_field :name, class: "form-control", placeholder: "Enter name"
+  .form-group
+    = f.label :password do
+      Password
+      = f.text_field :password, class: "form-control", placeholder: "Enter password"
+  = f.submit "Login", class: "btn btn-primary"

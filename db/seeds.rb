@@ -12,7 +12,7 @@ Organization.destroy_all
 Survey.destroy_all
 Token.destroy_all
 
-Organization.create!([{ name: 'Xing AG', password_digest: 'qwe123' }, { name: 'Yandex', password_digest: '123qwe' }, { name: 'e-legion', password_digest: 'q123we' }])
+Organization.create!([{ name: 'Xing AG', password: 'qwe123' }, { name: 'Yandex', password: '123qwe' }, { name: 'e-legion', password: 'q123we' }])
 
 Organization.all.each do |org|
   org.teams.create! [

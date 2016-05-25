@@ -11,6 +11,8 @@
         .navbar-header
           %a.navbar-brand{ href: "#" }
             Health Check
+        = button_to "Logout", logout_path, method: :delete, class: "btn btn-link"
+        
     .container
       - flash.each do |key, value|
         %div.alert.alert-info{ class: key } 
