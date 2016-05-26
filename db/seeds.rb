@@ -7,10 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 today = Date.today
 five_days_after = Date.today + 5.days
+five_days_before = Date.today - 5.days
 
 Organization.destroy_all
 Survey.destroy_all
 Token.destroy_all
+Vote.destroy_all
 
 Organization.create!([{ name: 'Xing AG', password: 'qwe123' }, { name: 'Yandex', password: '123qwe' }, { name: 'e-legion', password: 'q123we' }])
 
@@ -27,9 +29,26 @@ Organization.all.each do |org|
   ]
 end
 
-Survey.create!({ start_at: today, stop_at: five_days_after })
+Survey.create!([
+  { start_at: five_days_before, stop_at: today - 2.days },
+  { start_at: five_days_before, stop_at: today }, 
+  { start_at: today, stop_at: five_days_after }
+])
 
-Team.first.emails.split(/\s*,\s*/).each do
-  Token.create!({ guid: SecureRandom.uuid, team_id: Team.first.id, survey_id: Survey.first.id })
+Survey.all.each do |surv|
+  Team.first.emails.split(/\s*,\s*/).each do
+    Token.create!({ guid: SecureRandom.uuid, team_id: Team.first.id, survey_id: surv.id })
+  end
 end
+
+Survey.all.each do |surv|
+  Organization.first.questions.each do |q|
+    Vote.create!([
+      { value: rand(0.0...1.0), comment: "comment by team 1 for #{surv.id} and q = #{q.id}", team_id: Team.first.id, survey_id: surv.id, question_id: q.id },
+      { value: rand(0.0...1.0), comment: "comment by team 1 for #{surv.id} and q = #{q.id}", team_id: Team.first.id, survey_id: surv.id, question_id: q.id },
+      { value: rand(0.0...1.0), comment: "comment by team 1 for #{surv.id} and q = #{q.id}", team_id: Team.first.id, survey_id: surv.id, question_id: q.id }
+    ])
+  end
+end
+
 

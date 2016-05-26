@@ -4,17 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :ensure_login
+  
   helper_method :logged_in?, :current_org
 
-  def ensure_login
-    redirect_to login_path unless session[:organization_id]
-  end
+  protected
+    def ensure_login
+      redirect_to login_path unless session[:organization_id]
+    end
 
-  def logged_in?
-    session[:organization_id]
-  end
+    def logged_in?
+      session[:organization_id]
+    end
 
-  def current_org
-    @current_org ||= Organization.find(session[:organization_id])
-  end
+    def current_org
+      @current_org ||= Organization.find(session[:organization_id])
+    end
 end

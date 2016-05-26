@@ -12,7 +12,7 @@
           = question.title
         %td
           value:
-          = text_field_tag "votes[#{question.id}][value]", nil, type: "number", min: "0", max: "1"
+          = text_field_tag "votes[#{question.id}][value]", nil, type: "number", min: "0", max: "1", step: "0.1"
           comment:
           = text_field_tag "votes[#{question.id}][comment]"
   = submit_tag
