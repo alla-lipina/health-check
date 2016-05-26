@@ -1,18 +1,28 @@
+%h1
+  Make your contribution to define your team's health
+%br
+
 = form_tag(votes_path({token: params[:token]})) do
   %table.table
     %tr
       %th
         question:
       %th
-        vote and comment:
+        vote:
       %th
+        comment:
     - @organization.questions.each do |question|
       %tr
         %td
-          = question.title
+          %b
+            = question.title
+          %br
+          %em
+            = question.text
         %td
-          value:
-          = text_field_tag "votes[#{question.id}][value]", nil, type: "number", min: "0", max: "1", step: "0.1"
-          comment:
-          = text_field_tag "votes[#{question.id}][comment]"
-  = submit_tag
+          = text_field_tag "votes[#{question.id}][value]", 0.5, type: "range", min: "0", max: "1", step: "0.1", id: "inputId#{question.id}", oninput: "outputId#{question.id}.value = inputId#{question.id}.value * 10"
+          %output{:name => "votes[#{question.id}][value]", id: "outputId#{question.id}"} 5
+        %td
+          = text_area_tag "votes[#{question.id}][comment]", nil, class: "form-control", rows: "1"
+  = submit_tag nil, class: "btn btn-primary"
+
