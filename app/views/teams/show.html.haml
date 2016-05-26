@@ -8,6 +8,6 @@
   %dd
     = @team.emails
 
-= link_to 'Edit', edit_organization_team_path(@organization, @team)
+= link_to 'Edit', edit_organization_team_path(current_org, @team)
 |
-= link_to 'Back', organization_path(@organization)
+= link_to 'Back', organization_path(current_org)

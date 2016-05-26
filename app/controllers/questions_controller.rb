@@ -1,23 +1,22 @@
 class QuestionsController < ApplicationController
-  before_action :set_organization
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   
   def index
-    @questions = @organization.questions.all
+    @questions = current_org.questions.all
   end
 
   def show
   end
 
   def new
-    @question = @organization.questions.new
+    @question = current_org.questions.new
   end
 
   def edit
   end
 
   def create
-    @question = @organization.questions.new(question_params)
+    @question = current_org.questions.new(question_params)
     
     if @question.save
       redirect_to organization_question_url
@@ -42,11 +41,7 @@ class QuestionsController < ApplicationController
 
   private
     def set_question
-      @question = @organization.questions.find(params[:id])
-    end
-
-    def set_organization
-      @organization = Organization.find(params[:organization_id])
+      @question = current_org.questions.find(params[:id])
     end
 
     def question_params

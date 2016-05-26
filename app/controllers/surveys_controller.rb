@@ -1,6 +1,5 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :set_organization, only: [:show]
 
   def index
     @surveys = Survey.all
@@ -49,10 +48,6 @@ class SurveysController < ApplicationController
   private
     def set_survey
       @survey = Survey.find(params[:id])
-    end
-
-    def set_organization
-      @organization = Organization.first
     end
 
     def survey_params

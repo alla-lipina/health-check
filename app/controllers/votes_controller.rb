@@ -1,7 +1,10 @@
 class VotesController < ApplicationController
+  
   before_action :set_token
   before_action :set_team
   before_action :set_organization
+
+  skip_before_action :ensure_login, only: [:new, :create]
 
   def new
     if @token
@@ -21,7 +24,7 @@ class VotesController < ApplicationController
     Token.find(@token).destroy
 
     #TODO: think where to redirect
-    redirect_to organization_url(@organization), notice: 'You votes are counted!'
+    redirect_to root_url, notice: 'You votes are counted!'
   end
 
   private

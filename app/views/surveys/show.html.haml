@@ -1,8 +1,8 @@
-- Organization.first.teams.each do |team|
+- current_org.teams.each do |team|
   = team.name
 
   %ul
-    - Organization.first.questions.each do |question|
+    - current_org.questions.each do |question|
       %li
         = question.title
         = Vote.by_team(team.id).by_survey(@survey.id).avg

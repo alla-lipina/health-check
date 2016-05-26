@@ -2,7 +2,7 @@
 
 %h1 
   Listing questions for 
-  = @organization.name
+  = current_org.name
   
 %table.table
   %tr
@@ -18,9 +18,9 @@
         %em
           = question.text
       %td
-        = link_to 'Show', organization_question_path(@organization, question), class: "btn btn-link"
+        = link_to 'Show', organization_question_path(current_org, question), class: "btn btn-link"
         |
-        = link_to 'Edit', edit_organization_question_path(@organization, question), class: "btn btn-link"
+        = link_to 'Edit', edit_organization_question_path(current_org, question), class: "btn btn-link"
         |
         .inline-block{ style: "display: inline-block" }
-          = button_to "Destroy", [@organization, question], method: :delete, class: "btn btn-link"          |
+          = button_to "Destroy", [current_org, question], method: :delete, class: "btn btn-link"          |

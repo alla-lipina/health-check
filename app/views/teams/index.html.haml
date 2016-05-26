@@ -1,0 +1,24 @@
+%h1 
+  Listing Teams of "
+  = current_org.name
+  "
+%table.table
+  %thead
+    %tr
+      %th
+        name:
+      %th
+        actions:
+  %tbody
+    - current_org.teams.each do |team|
+      %tr
+        %td= team.name
+        %td
+          = link_to 'Show', [current_org, team], class: "btn btn-link"
+          |
+          = link_to 'Edit', edit_organization_team_path(current_org, team), class: "btn btn-link"
+          |
+          .inline-block{ style: "display: inline-block" }
+            = button_to "Destroy", [current_org, team], method: :delete, class: "btn btn-link"
+
+= link_to 'New Team', new_organization_team_path(current_org), class: "btn btn-primary"
