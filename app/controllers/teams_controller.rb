@@ -44,10 +44,6 @@ class TeamsController < ApplicationController
       @team = current_org.teams.find(params[:id])
     end
 
-    def set_organization
-      current_org = Organization.find(params[:organization_id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit([:name, :emails])

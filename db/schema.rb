@@ -33,9 +33,12 @@ ActiveRecord::Schema.define(version: 20160520073941) do
   create_table "surveys", force: :cascade do |t|
     t.datetime "start_at"
     t.datetime "stop_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "surveys", ["organization_id"], name: "index_surveys_on_organization_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

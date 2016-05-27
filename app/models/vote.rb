@@ -5,6 +5,7 @@ class Vote < ActiveRecord::Base
 
   scope :by_team, -> (id) { where(team_id: id) }
   scope :by_survey, -> (id) { where(survey_id: id) }
+  scope :by_question, -> (id) { where(question_id: id) }
 
   def self.avg
     average(:value)

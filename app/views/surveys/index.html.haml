@@ -17,13 +17,13 @@
           till:
           = survey.stop_at.strftime("%d/%m")
         %td
-          = link_to 'Show', survey, class: "btn btn-link"
+          = link_to 'Show', [current_org, survey], class: "btn btn-link"
           |
-          = link_to 'Edit', edit_survey_path(survey), class: "btn btn-link"
+          = link_to 'Edit', edit_organization_survey_path(current_org, survey), class: "btn btn-link"
           |
           .inline-block{ style: "display: inline-block" }
-            = button_to "Destroy", survey, method: :delete, class: "btn btn-link"
+            = button_to "Destroy", [current_org, survey], method: :delete, class: "btn btn-link"
 
 %br
 
-= link_to 'New Survey', new_survey_path
+= link_to 'New Survey', new_organization_survey_path(current_org), class: "btn btn-primary"
