@@ -1,13 +1,26 @@
-%dl
-  %dt
-    team name:
-  %dd
-    = @team.name
-  %dt
-    team emails:
-  %dd
+%h1
+  Team
+  = @team.name
+
+%p
+  with members consisting of emails:
+  %b
     = @team.emails
 
 = link_to 'Edit', edit_organization_team_path(current_org, @team)
 |
 = link_to 'Back', organization_path(current_org)
+
+/ %h2 Stats
+
+/ - Survey.all.each do |survey|
+/   %h3
+/     for the survey 
+/     = survey.start_at.strftime("%d/%m")
+/     \-
+/     = survey.stop_at.strftime("%d/%m")
+/   %ul
+/     - current_org.questions.each do |question|
+/       %li
+/         = question.title
+/         = Vote.by_team(@team.id).by_survey(survey.id).by_question(question.id).avg

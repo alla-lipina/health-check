@@ -11,6 +11,18 @@
         .navbar-header
           %a.navbar-brand{ href: "#" }
             Health Check
+        - if logged_in?
+          %ul.nav.navbar-nav.navbar-left
+            %li
+              =link_to "Teams", organization_teams_path(current_org)
+            %li
+              =link_to "Questions", organization_questions_path(current_org)
+            %li
+              =link_to "Surveys", organization_surveys_path(current_org)
+            %li
+              =link_to statistics_path do 
+                %b
+                  Statistics
 
         %ul.nav.navbar-nav.navbar-right
           - if logged_in?
