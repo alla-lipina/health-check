@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:organization_id] = organization.id
       redirect_to root_path, notice: "Logged in successfully!"
     else 
-      redirect_to login_path, alert: "Login failed :("
+      redirect_to login_path, alert: "Login failed"
     end
   end
 
