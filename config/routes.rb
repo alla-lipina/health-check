@@ -15,7 +15,17 @@ Rails.application.routes.draw do
 
   resources :votes
 
-  resources :statistics
+  resources :statistics do
+    # member do
+    # end
+    collection do
+      get 'data', :defaults => { :format => 'json' }
+    end
+  end
+
+  # GET /statistics/:id
+
+  # get 'statistics/index' 
 
   resources :organizations do
     resources :surveys

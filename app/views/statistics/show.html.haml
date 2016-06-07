@@ -1,1 +1,36 @@
-show.html.haml
+%h2
+  Results for the last survey:
+  / = @survey.start_at.strftime("%d/%m")
+  / \-
+  / = @survey.stop_at.strftime("%d/%m")
+%table.table
+  %tr
+    %th
+      Questions
+    %th
+      = @team.name
+    %th
+      Comments
+
+  - current_org.questions.each do |question|
+    %tr
+      %td
+        = question.title
+      %td
+        - if @survey.trend(@team.id, question.id) > 0
+          %span{ style: "color: green" }
+            = Vote.by_team(@team.id).by_survey(@survey.id).by_question(question.id).avg  
+        - else
+          %span{ style: "color: red" }
+            = Vote.by_team(@team.id).by_survey(@survey.id).by_question(question.id).avg
+      %td
+        - Vote.by_team(@team.id).by_survey(@survey.id).by_question(question.id).each do |vote|
+          %em
+            \-
+            = vote.comment
+          %br
+
+%h2
+  Statisctics (last 10 surveys)
+
+

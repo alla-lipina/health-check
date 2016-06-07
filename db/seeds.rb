@@ -27,21 +27,18 @@ Organization.all.each do |org|
     { title: "Do you feel comfortable?", text: "lorem ipsum dolor sit amed"},
     { title: "Are you happy?", text: "lorem ipsum dolor sit amed"}
   ]
+  org.surveys.create! [
+    { start_at: five_days_before, stop_at: today - 2.days },
+    { start_at: five_days_before, stop_at: today }, 
+    { start_at: today, stop_at: five_days_after }
+  ]
 end
 
-Survey.create!([
-  { start_at: five_days_before, stop_at: today - 2.days },
-  { start_at: five_days_before, stop_at: today }, 
-  { start_at: today, stop_at: five_days_after }
-])
-
-Survey.all.each do |surv|
-  Team.first.emails.split(/\s*,\s*/).each do
-    Token.create!({ guid: SecureRandom.uuid, team_id: Team.first.id, survey_id: surv.id })
-  end
+Team.first.emails.split(/\s*,\s*/).each do
+  Token.create!({ guid: SecureRandom.uuid, team_id: Team.first.id, survey_id: Survey.last.id })
 end
 
-Survey.all.each do |surv|
+Organization.first.surveys.each do |surv|
   Organization.first.questions.each do |q|
     Vote.create!([
       { value: rand(0.0...1.0), comment: "comment by team 1 for #{surv.id} and q = #{q.id}", team_id: Team.first.id, survey_id: surv.id, question_id: q.id },
