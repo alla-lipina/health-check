@@ -6,42 +6,33 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default
-      .container-fluid
-        .navbar-header
-          %a.navbar-brand{ href: "#" }
-            Health Check
-        - if logged_in?
-          %ul.nav.navbar-nav.navbar-left
-            %li
-              =link_to "Teams", organization_teams_path(current_org)
-            %li
-              =link_to "Questions", organization_questions_path(current_org)
-            %li
-              =link_to "Surveys", organization_surveys_path(current_org)
-            %li
-              =link_to statistics_path do 
-                %b
-                  Statistics
-
-        %ul.nav.navbar-nav.navbar-right
+    %nav.navbar.navbar-full.navbar-light.bg-faded
+      %a.navbar-brand{:href => "#"} Health Check
+      .nav.navbar-nav
+        / =link_to root_path, class: "nav-link nav-item active" do
+        =link_to root_path, class: "nav-link nav-item" do
+          Welcome
+          / %span.sr-only (current)
+        =link_to "Teams", organization_teams_path(current_org), class: "nav-link nav-item"
+        =link_to "Questions", organization_questions_path(current_org), class: "nav-link nav-item"
+        =link_to "Surveys", organization_surveys_path(current_org), class: "nav-link nav-item"
+        =link_to "Statistics", statistics_path, class: "nav-link nav-item"
+    
+      
+        .pull-xs-right
           - if logged_in?
-            %li
-              = link_to "#" do
-                logged in as 
-                %b
-                  = current_org.name
-            %li
-              .navbar-form
-                = button_to "Logout", logout_path, method: :delete, class: "btn btn-link"
+            =link_to statistics_path, class: "nav-link nav-item" do
+              logged in as 
+              %b
+              = current_org.name
+              / = button_to "Logout", logout_path, method: :delete, class: "btn btn-link"
           - else
-            %li
-              = link_to "Login", login_path
+            = link_to "Login", login_path, class: "nav-link nav-item"
 
             
     .container
       - flash.each do |key, value|
         %div.alert.alert-info{ class: key } 
           = value
-      .boo
-        = yield 
+      .boo{style: "padding-top: 50px;"}
+        = yield
