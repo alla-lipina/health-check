@@ -33,4 +33,10 @@
 %h2
   Statisctics (last 10 surveys)
 
-
+- @team_graph_data.each do |data|
+  %h3
+    = data[:datasets][0][:label]
+  %canvas{width: "400", height: "150", id: "graph_#{data[:question_id]}"}
+  :javascript
+    var data = "#{j data.to_json}"
+    draw_graph(data, 'line', 'graph_#{data[:question_id]}')

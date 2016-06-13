@@ -1,8 +1,8 @@
-window.draw_graph = function(data) {
+window.draw_graph = function(data, type, element_id) {
   data = JSON.parse(data)
-  var ctx = document.getElementById("graph");
+  var ctx = document.getElementById(element_id);
   var myChart = new Chart(ctx, {
-      type: 'bar',
+      type: type,
       data: data,
       options: {
           scales: {

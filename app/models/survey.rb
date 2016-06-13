@@ -19,4 +19,8 @@ class Survey < ActiveRecord::Base
   def previous
     Survey.where("stop_at < ?", stop_at).last
   end
+
+  def last(number)
+    Survey.where("stop_at < ?", stop_at)[-number,-1]
+  end
 end
