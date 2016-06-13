@@ -16,7 +16,7 @@ Vote.destroy_all
 
 Organization.create!([{ name: 'Xing AG', password: 'qwe123' }, { name: 'Yandex', password: '123qwe' }, { name: 'e-legion', password: 'q123we' }])
 
-Organization.all.each do |org|
+Organization.first do |org|
   org.teams.create! [
     { name: "Team 1", emails: "ellie@gmail.com, collin@gmail.com, robert@gmail.com"},
     { name: "Team 2", emails: "roma@gmail.com, rori@gmail.com"},

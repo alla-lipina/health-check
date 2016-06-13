@@ -1,14 +1,13 @@
-%h2 Stats
+%h2
+  Progress of the current survey
+  = "#{@current_survey.start_at.strftime("%d/%m")}-#{@current_survey.stop_at.strftime("%d/%m")}"
 
-%ul.nav.nav-pills
-  %li.active{:role => "presentation"}
-    %a{:href => "#"} Last survey
-  %li{:role => "presentation"}
-    %a{:href => "#"} Profile
-  %li{:role => "presentation"}
-    %a{:href => "#"} Messages
+- current_org.teams.each do |t|
+  =t.name
+  %progress.progress{ value: @current_survey.participants_count(t.id), max: t.count_members }
+    =@current_survey.participants_count(t.id)
 
-%h3
+%h2{style: "padding-top:50px"}
   for the survey 
   = "#{@survey.start_at.strftime("%d/%m")}-#{@survey.stop_at.strftime("%d/%m")}"
 %table.table

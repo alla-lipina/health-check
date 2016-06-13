@@ -8,14 +8,13 @@
 
   .form-group
     = f.label :start_at do
-      Team name
-      = f.text_field :start_at, class: "form-control", placeholder: "Enter name"
-    %p.help-block Blbal
+      Start at
+      = f.text_field :start_at, class: "form-control", placeholder: "Start at"
 
   .form-group
     = f.label :stop_at do
-      Team members emails
-      = f.text_field :stop_at, class: "form-control", placeholder: "Enter name"
+      Stop at
+      = f.text_field :stop_at, class: "form-control", placeholder: "Stop at"
 
   
   = f.submit class: "btn btn-primary"

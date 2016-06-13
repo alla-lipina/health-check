@@ -5,6 +5,10 @@ class Survey < ActiveRecord::Base
 
   default_scope { order :stop_at }
 
+  def self.last_finished
+    Survey.where("stop_at < ?", Date.today).last
+  end
+  
   def participants_count(team_id=nil)
     votes = self.votes
     votes = votes.by_team(team_id) if team_id.present?
@@ -20,7 +24,7 @@ class Survey < ActiveRecord::Base
     Survey.where("stop_at < ?", stop_at).last
   end
 
-  def last(number)
-    Survey.where("stop_at < ?", stop_at)[-number,-1]
+  def last(amount=1)
+    Survey.where("stop_at < ?", stop_at)[-amount,-1]
   end
 end

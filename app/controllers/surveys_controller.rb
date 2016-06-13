@@ -10,7 +10,7 @@ class SurveysController < ApplicationController
     if @survey.stop_at.past?
       render :show
     else
-      redirect_to surveys_url, notice: 'The survey is not finished yet.'
+      redirect_to organization_surveys_url, notice: 'The survey is not finished yet.'
     end
   end
 
@@ -25,7 +25,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(survey_params)
 
     if @survey.save
-      redirect_to @survey, notice: 'Survey was successfully created.'
+      redirect_to organization_surveys_url, notice: 'Survey was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class SurveysController < ApplicationController
   # organization can prolong the survey
   def update
     if @survey.update(survey_params)
-      redirect_to @survey, notice: 'Survey was successfully updated.'
+      redirect_to organization_surveys_url, notice: 'Survey was successfully updated.'
     else
       render :edit 
     end
@@ -42,7 +42,7 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.destroy
-    redirect_to surveys_url, notice: 'Survey was successfully destroyed.'
+    redirect_to organization_surveys_url, notice: 'Survey was successfully destroyed.'
   end
 
   private
