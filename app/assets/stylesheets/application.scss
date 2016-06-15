@@ -1,1 +1,81 @@
 @import "bootstrap";
+
+h1, h2 {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+}
+
+h3 {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+
+// TODO: Refactor this
+$line-w: .125em;
+
+$track-s: 100%;
+$track-l: 45%;
+$track-bg: linear-gradient(90deg, hsl(0, $track-s, $track-l),
+  hsl(15, $track-s, $track-l), hsl(30, $track-s, $track-l), 
+  hsl(45, $track-s, $track-l), hsl(60, $track-s, $track-l), 
+  hsl(75, $track-s, $track-l), hsl(90, $track-s, $track-l));
+$track-lines: linear-gradient(90deg, 
+  #fff $line-w, transparent $line-w) -$line-w/2 50%;
+
+
+@mixin track() {
+  width: 10*2em; height: .375em;
+  background: $track-lines, $track-bg;
+  background-size: 2em 100%, 100% 100%;
+}
+
+@mixin thumb() {
+  width: 3px; height: 10px;
+  background: red;
+}
+
+input[type='range'] {
+  &, 
+  &::-webkit-slider-runnable-track, 
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  
+  padding: 1em 0 0;
+  width: 10*2em; height: 2em;
+  background: transparent;
+  font-size: 0.5em;
+  cursor: pointer;
+  
+  &::-webkit-slider-runnable-track {
+    position: relative;
+    @include track();
+  }
+  &::-moz-range-track {
+    @include track();
+  }
+  &::-ms-track {
+    border: none;
+    @include track();
+    color: transparent;
+  }
+  
+  &::-ms-fill-lower { display: none; }
+  
+  &::-webkit-slider-thumb {
+    margin-top: (.375em - 2em)/2;
+    @include thumb();
+  }
+  &::-moz-range-thumb {
+    @include thumb();
+  }
+  &::-ms-thumb {
+    @include thumb();
+  }
+  
+  &:focus {
+    outline: none;
+    // box-shadow: 0 0 .25em orange;
+  }
+}

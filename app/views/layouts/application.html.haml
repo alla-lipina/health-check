@@ -7,21 +7,17 @@
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-full.navbar-light.bg-faded
-      %a.navbar-brand{:href => "#"} Health Check
+      %a.navbar-brand{:href => root_path} Health Check
       .nav.navbar-nav
-        / =link_to root_path, class: "nav-link nav-item active" do
-        =link_to root_path, class: "nav-link nav-item" do
-          Welcome
-          / %span.sr-only (current)
         =link_to "Teams", organization_teams_path(current_org), class: "nav-link nav-item"
         =link_to "Questions", organization_questions_path(current_org), class: "nav-link nav-item"
-        =link_to "Surveys", organization_surveys_path(current_org), class: "nav-link nav-item"
+        =link_to "Surveys", organization_surveys_path(current_org), class: "nav-link nav-item active"
         =link_to "Statistics", statistics_path, class: "nav-link nav-item"
     
       
         .pull-xs-right
           - if logged_in?
-            =link_to statistics_path, class: "nav-link nav-item" do
+            =link_to organization_path(current_org), class: "nav-link nav-item" do
               logged in as 
               %b
               = current_org.name
@@ -34,5 +30,4 @@
       - flash.each do |key, value|
         %div.alert.alert-info{ class: key } 
           = value
-      .boo{style: "padding-top: 50px;"}
-        = yield
+      = yield

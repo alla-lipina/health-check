@@ -26,10 +26,10 @@
       - current_org.teams.each do |team|
         %td
           - if @survey.trend(team.id, question.id) > 0
-            %span{ style: "color: green" }
+            %span{ style: "background-color: rgba(65,117,5, #{@survey.trend(team.id, question.id)*5});" }
               = Vote.by_team(team.id).by_survey(@survey.id).by_question(question.id).avg  
           - else
-            %span{ style: "color: red" }
+            %span{ style: "background-color: rgba(208,2,27, #{@survey.trend(team.id, question.id)*(-5)});" }
               = Vote.by_team(team.id).by_survey(@survey.id).by_question(question.id).avg
 
 

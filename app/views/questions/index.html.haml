@@ -3,11 +3,6 @@
   = current_org.name
   
 %table.table
-  %tr
-    %th 
-      title and text:
-    %th
-      action:
   - @questions.each do |question|
     %tr
       %td
@@ -16,8 +11,8 @@
         %em
           = question.text
       %td
-        = link_to 'Show', organization_question_path(current_org, question), class: "btn btn-link"
-        |
+        / = link_to 'Show', organization_question_path(current_org, question), class: "btn btn-link"
+        / |
         = link_to 'Edit', edit_organization_question_path(current_org, question), class: "btn btn-link"
         |
         .inline-block{ style: "display: inline-block" }

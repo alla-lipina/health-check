@@ -1,9 +1,8 @@
 = form_for([current_org, @question]) do |f|
   - if @question.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@question.errors.count, "error")
-        prohibited this question from being saved:
+    #error_explanation.alert.alert-warning{ role: "alert" }
+      = pluralize(@question.errors.count, "error")
+      prohibited this question from being saved:
       %ul
         - @question.errors.full_messages.each do |message|
           %li= message
