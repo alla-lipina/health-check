@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
+  
+  
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -32,9 +34,12 @@ Rails.application.routes.draw do
     resources :teams
     resources :questions
   end
- 
-  resources :sessions, only: [:new, :create, :destroy]
 
+  get 'signup' => "organizations#new", as: "signup"
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  
   get 'login' => "sessions#new", as: "login"
-  delete 'logout' => "sessions#destroy", as: "logout"
+  delete 'logout' => "sessions#destroy", as: "logout" 
+
 end

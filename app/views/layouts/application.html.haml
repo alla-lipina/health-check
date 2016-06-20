@@ -8,22 +8,13 @@
   %body
     %nav.navbar.navbar-full.navbar-light.bg-faded
       %a.navbar-brand{:href => root_path} Health Check
-      .nav.navbar-nav
-        =link_to "Teams", organization_teams_path(current_org), class: "nav-link nav-item"
-        =link_to "Questions", organization_questions_path(current_org), class: "nav-link nav-item"
-        =link_to "Surveys", organization_surveys_path(current_org), class: "nav-link nav-item active"
-        =link_to "Statistics", statistics_path, class: "nav-link nav-item"
-    
-      
-        .pull-xs-right
-          - if logged_in?
-            =link_to organization_path(current_org), class: "nav-link nav-item" do
-              logged in as 
-              %b
-              = current_org.name
-              / = button_to "Logout", logout_path, method: :delete, class: "btn btn-link"
-          - else
-            = link_to "Login", login_path, class: "nav-link nav-item"
+      - if logged_in?
+        = render 'layouts/navigation'
+
+      - else
+        .nav.navbar-nav.pull-xs-right
+          = link_to "Login", login_path, class: "nav-link nav-item"
+          = link_to "Singup", signup_path, class: "nav-link nav-item"
 
             
     .container

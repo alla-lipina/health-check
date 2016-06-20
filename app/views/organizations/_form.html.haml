@@ -10,8 +10,11 @@
   
   .form-group
     = f.label :name do
-      Organization name
+      Organization login:
       = f.text_field :name, class: "form-control", placeholder: "Enter name"
-    %p.help-block Blbal
+  .form-group
+    = f.label :password_digest do
+      Organization password:
+      = f.text_field :password_digest, class: "form-control", placeholder: "Enter password"
   
   = f.submit class: "btn btn-primary"

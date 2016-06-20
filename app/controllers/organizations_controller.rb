@@ -1,6 +1,8 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :ensure_login, only: [:new, :create]
+
   def index
     @organizations = Organization.all
   end

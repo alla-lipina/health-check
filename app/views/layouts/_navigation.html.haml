@@ -1,0 +1,12 @@
+.nav.navbar-nav
+  =link_to "Teams", organization_teams_path(current_org), class: "nav-link nav-item #{'active' if controller.controller_name == 'teams'}"
+  =link_to "Questions", organization_questions_path(current_org), class: "nav-link nav-item #{'active' if controller.controller_name == 'questions'}"
+  =link_to "Surveys", organization_surveys_path(current_org), class: "nav-link nav-item #{'active' if controller.controller_name == 'surveys'}"
+  =link_to "Statistics", statistics_path, class: "nav-link nav-item #{'active' if controller.controller_name == 'statistics'}"
+
+
+.nav.navbar-nav.pull-xs-right
+  =link_to organization_path(current_org), class: "nav-link nav-item" do
+    logged in as 
+    %b
+      = current_org.name
