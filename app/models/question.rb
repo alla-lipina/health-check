@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   has_many :votes
   
   validates :title, presence: true,
-                    length: { minimum: 5 }
+                    length: { minimum: 3 }
 
 
   # def tendency(team_id)
