@@ -17,7 +17,7 @@
           = link_to "Singup", signup_path, class: "nav-link nav-item"
 
             
-    .container
+    .container.hc-container
       - flash.each do |key, value|
         %div.alert.alert-info{ class: key } 
           = value

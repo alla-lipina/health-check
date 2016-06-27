@@ -13,14 +13,14 @@ Organization.first.teams.create! [
 ]
 
 Organization.first.questions.create! [
-  { title: "Delivering Value", text: "(+) We deliver great stuff! We're proud of it and our stakeholders are really happy. (-) We deliver crap. We feel ashamed to deliver it. Our stakeholders hate us."},
-  { title: "Easy to release", text: "(+) Releasing is simple, safe, painless and mostly automated. (-) Releasing is risky, painful, lots of manual work and takes forever. "},
-  { title: "Fun", text: "(+) We love going to work and have great fun working together! (-) Boooooooring... "},
-  { title: "Health of Codebase", text: "(+) We're proud of the quality of our code! It is clean, easy to read and has great test coverage. (-) Our code is a pile of dung and technical debt is raging out of control."},
-  { title: "Learning", text: "(+) We're learning lots of interesting stuff all the time! (-) We never have time to learn anything. "},
-  { title: "Mission", text: "(+) We know exactly why we are here and we’re really excited about it! (-) We have no idea why we are here, there's no high lever picture or focus. Our so called mission is completely unclear and uninspiring. "},
-  { title: "Pawns or  Players", text: "(+) We are in control of our own destiny! We decide what to build and how to build it. (-) We are just pawns in a game of chess with no influence over what we build or how we build it. "},
-  { title: "Speed", text: "(+) We get stuff done really quickly! No waiting and no delays. (-) We never seem to get anything done. We keep getting stuck or interrupted. Stories keep getting stuck on dependencies. "}
+  { title: "Delivering Value", text: "(+) We deliver great stuff! We're proud of it and our stakeholders are really happy. \n (-) We deliver crap. We feel ashamed to deliver it. Our stakeholders hate us."},
+  { title: "Easy to release", text: "(+) Releasing is simple, safe, painless and mostly automated. \n (-) Releasing is risky, painful, lots of manual work and takes forever. "},
+  { title: "Fun", text: "(+) We love going to work and have great fun working together! \n (-) Boooooooring... "},
+  { title: "Health of Codebase", text: "(+) We're proud of the quality of our code! It is clean, easy to read and has great test coverage. \n (-) Our code is a pile of dung and technical debt is raging out of control."},
+  { title: "Learning", text: "(+) We're learning lots of interesting stuff all the time! \n (-) We never have time to learn anything. "},
+  { title: "Mission", text: "(+) We know exactly why we are here and we’re really excited about it! \n (-) We have no idea why we are here, there's no high lever picture or focus. Our so called mission is completely unclear and uninspiring. "},
+  { title: "Pawns or  Players", text: "(+) We are in control of our own destiny! We decide what to build and how to build it. \n (-) We are just pawns in a game of chess with no influence over what we build or how we build it. "},
+  { title: "Speed", text: "(+) We get stuff done really quickly! No waiting and no delays. \n (-) We never seem to get anything done. We keep getting stuck or interrupted. Stories keep getting stuck on dependencies. "}
 ]
 
 Organization.first.surveys.create! [

@@ -6,16 +6,15 @@
   - @questions.each do |question|
     %tr
       %td
-        = question.title
+        %strong
+          = question.title
         %br
         %em
-          = question.text
-      %td
-        / = link_to 'Show', organization_question_path(current_org, question), class: "btn btn-link"
-        / |
+          = h(question.text).gsub(/\n/, '<br/>').html_safe
+      %td.hc-no-wrap
         = link_to 'Edit', edit_organization_question_path(current_org, question), class: "btn btn-link"
-        |
+        \/
         .inline-block{ style: "display: inline-block" }
-          = button_to "Destroy", [current_org, question], method: :delete, class: "btn btn-link"          |
+          = button_to "Delete", [current_org, question], method: :delete, class: "btn btn-link"
 
 = link_to 'New question', new_organization_question_path, class: "btn btn-primary"

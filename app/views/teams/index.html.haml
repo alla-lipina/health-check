@@ -8,17 +8,14 @@
     - current_org.teams.each do |team|
       %tr
         %td
-          = team.name
+          %strong
+            = team.name
           %br
           %em
-            %strong
-              emails:
             = team.emails
-        %td
-          / = link_to 'Show', [current_org, team], class: "btn btn-link"
-          / |
+        %td.hc-no-wrap
           = link_to 'Edit', edit_organization_team_path(current_org, team), class: "btn btn-link"
-          |
+          \/
           .inline-block{ style: "display: inline-block" }
             = button_to "Delete", [current_org, team], method: :delete, class: "btn btn-link"
 
