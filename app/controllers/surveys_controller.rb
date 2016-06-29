@@ -25,6 +25,11 @@ class SurveysController < ApplicationController
     @survey = Survey.new(survey_params)
 
     if @survey.save
+      current_org.teams.each do | team |
+        team.emails.split(/\s*,\s*/).each do
+          Token.create!({ guid: SecureRandom.uuid, team_id: team.id, survey_id: @survey.id })
+        end
+      end
       redirect_to organization_surveys_url, notice: 'Survey was successfully created.'
     else
       render :new
