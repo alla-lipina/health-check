@@ -12,6 +12,7 @@ class Survey < ActiveRecord::Base
   def participants_count(team_id=nil)
     votes = self.votes
     votes = votes.by_team(team_id) if team_id.present?
+    debugger
     votes.count / organization.questions.count
   end
 

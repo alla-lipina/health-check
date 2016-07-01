@@ -1,9 +1,9 @@
 class StatisticsController < ApplicationController
 
   def index
-    @current_survey = Survey.last
+    @current_survey = current_org.surveys.last
 
-    @survey = Survey.last_finished
+    @survey = current_org.surveys.last_finished
     # &:name ~ {|t| t.name}
     teams_names = current_org.teams.map &:name
     participants = current_org.teams.map {|t| @survey.participants_count(t) }
@@ -23,9 +23,9 @@ class StatisticsController < ApplicationController
   end
 
   def show
-    @survey = Survey.last_finished
-    @team = Team.find(params[:id])
-    surveys = Survey.last(5).map { |s| s.stop_at.strftime("%d.%m.%y") }
+    @survey = current_org.surveys.last_finished
+    @team = current_org.teams.find(params[:id])
+    surveys = current_org.surveys.last(5).map { |s| s.stop_at.strftime("%d.%m.%y") }
 
     @team_graph_data = current_org.questions.map do |q|
       color = ["255, 99, 132", "54, 162, 235", "255, 206, 86", "75, 192, 192", "153, 102, 255", "255, 159, 64"].sample

@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   def index
-    @surveys = Survey.all
+    @surveys = current_org.surveys.all
   end
 
   def show
@@ -15,14 +15,14 @@ class SurveysController < ApplicationController
   end
 
   def new
-    @survey = Survey.new
+    @survey = current_org.surveys.new
   end
 
   def edit
   end
 
   def create
-    @survey = Survey.new(survey_params)
+    @survey = current_org.surveys.new(survey_params)
 
     if @survey.save
       current_org.teams.each do | team |
@@ -54,7 +54,7 @@ class SurveysController < ApplicationController
 
   private
     def set_survey
-      @survey = Survey.find(params[:id])
+      @survey = current_org.surveys.find(params[:id])
     end
 
     def survey_params
