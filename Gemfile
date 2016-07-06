@@ -17,7 +17,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'unicorn'
 
-gem 'pg', group: :production
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
