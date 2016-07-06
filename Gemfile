@@ -58,5 +58,5 @@ end
 
 gem 'capistrano'
 gem 'rvm-capistrano'
-gem 'pg', group: :production
+
 gem 'unicorn'
