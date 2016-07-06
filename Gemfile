@@ -34,10 +34,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
+# gem 'capistrano'
+# gem 'rvm-capistrano'
+
+gem 'pg', group: :production
 
 # https://github.com/twbs/bootstrap-rubygem
 
@@ -56,7 +60,4 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
-gem 'capistrano'
-gem 'rvm-capistrano'
-gem 'pg', group: :production
-gem 'unicorn'
+
