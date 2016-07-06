@@ -15,9 +15,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'unicorn'
 
-gem 'pg'
+gem 'capistrano', '~>2.15.5', require: false
+gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
@@ -31,5 +31,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
-gem 'capistrano', '~>2.15.5'
-gem 'rvm-capistrano'
+group :production do
+  gem 'unicorn'
+  gem 'pg'
+end
