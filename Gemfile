@@ -19,6 +19,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'capistrano', '~>2.15.5', require: false
 gem 'rvm-capistrano'
 
+# for emails sending from gmail
+gem 'figaro'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
