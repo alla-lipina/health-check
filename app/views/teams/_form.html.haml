@@ -1,4 +1,4 @@
-= form_for([@organization, @team]) do |f|
+= form_for([current_org, @team]) do |f|
   - if @team.errors.any?
     #error_explanation
       %h2
