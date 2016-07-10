@@ -28,7 +28,7 @@ class SurveysController < ApplicationController
       current_org.teams.each do | team |
         team.emails.split(/\s*,\s*/).each do | email |
           @token = Token.create!({ guid: SecureRandom.uuid, team_id: team.id, survey_id: @survey.id })
-          TokenSender.send_token_email(@token, email).deliver
+          TokenSender.send_token_email(@token, email).deliver_now
         end
       end
       
