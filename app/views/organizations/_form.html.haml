@@ -13,6 +13,10 @@
       Organization login:
       = f.text_field :name, class: "form-control", placeholder: "Enter name"
   .form-group
+    = f.label :email do
+      Organization email:
+      = f.text_field :email, class: "form-control", placeholder: "Enter email"
+  .form-group
     = f.label :password_digest do
       Organization password:
       = f.text_field :password_digest, class: "form-control", placeholder: "Enter password"

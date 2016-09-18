@@ -4,7 +4,7 @@ Token.destroy_all
 Vote.destroy_all
 Team.destroy_all
 
-Organization.create!([{ name: 'Xing AG', password: 'qwe123' }, { name: 'Yandex', password: '123qwe' }, { name: 'e-legion', password: 'q123we' }])
+Organization.create!([{ name: 'Xing AG', password: 'qwe123', email: 'alla@gmail.com' }, { name: 'Yandex', password: '123qwe', email: 'alla1@gmail.com' }, { name: 'e-legion', password: 'q123we', email: 'alla2@gmail.com' }])
 
 Organization.first.teams.create! [
   { name: "Team 1", emails: "ellie@gmail.com, collin@gmail.com, robert@gmail.com"},

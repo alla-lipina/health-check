@@ -22,6 +22,7 @@ class OrganizationsController < ApplicationController
 
     if @organization.save
       redirect_to @organization, notice: 'Organization was successfully created.'
+      UserMailer.welcome_email(@organization).deliver_now
     else
       render :new
     end
@@ -48,6 +49,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit([:name, :password])
+      params.require(:organization).permit([:name, :password, :email])
     end
 end
